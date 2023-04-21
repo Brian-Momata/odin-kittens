@@ -10,7 +10,7 @@ class KittensController < ApplicationController
   
 
   def create
-    @kitten = Kitten.new(params[:kitten])
+    @kitten = Kitten.new(kitten_params)
     if @kitten.save
       flash[:success] = "Kitten successfully created"
       redirect_to @kitten
@@ -27,7 +27,7 @@ class KittensController < ApplicationController
   end
   
   def update
-      if @kitten.update(params[:kitten])
+      if @kitten.update(kitten_params)
         flash[:success] = "Kitten was successfully updated"
         redirect_to @kitten
       else
@@ -50,5 +50,9 @@ class KittensController < ApplicationController
 
   def set_kitten
     @kitten = Kitten.find(params[:id])
+  end
+
+  def kitten_params
+    params.require(:kitten).permit(:name, :age, :cuteness, :softness)
   end
 end

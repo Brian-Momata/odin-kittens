@@ -1,2 +1,16 @@
 <h1>Kittens#index</h1>
-<p>Find me in app/views/kittens/index.html.erb</p>
+<% if !@kittens.empty? %>
+  <ul>
+    <% @Kittens.each do |kitten| %>
+      <li>
+        Name: <%= kitten.name %>
+        Age: <%= kitten.age %>
+        Cuteness: <%= kitten.cuteness %>
+        Softness: <%= kitten.softness %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No kittens</p>
+<% end %>
+
