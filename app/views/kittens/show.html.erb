@@ -1,2 +1,6 @@
 <h1>Kittens#show</h1>
-<p>Find me in app/views/kittens/show.html.erb</p>
+  Name: <%= @kitten.name %> <br><br>
+  Age: <%= @kitten.age %> <br><br>
+  Cuteness: <%= @kitten.cuteness %> <br><br>
+  Softness: <%= @kitten.softness %> <br><br>
+<%= link_to 'delete kitten', kitten_url(@kitten), data: { turbo_method: :delete } %>

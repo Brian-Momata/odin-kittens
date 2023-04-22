@@ -1,16 +1,18 @@
 <h1>Kittens#index</h1>
-<% if !@kittens.empty? %>
+<% if @kittens.empty? %>
+  <p>No kittens</p>
+<% else %>
   <ul>
-    <% @Kittens.each do |kitten| %>
+    <% @kittens.each do |kitten| %>
       <li>
-        Name: <%= kitten.name %>
+        Name: <%= kitten.name %> <br>
         Age: <%= kitten.age %>
-        Cuteness: <%= kitten.cuteness %>
-        Softness: <%= kitten.softness %>
-      </li>
+        <br>
+        <%= link_to 'Kitten details', kitten_url(kitten) %>
+        <%= link_to 'delete kitten', kitten_url(kitten), data: { turbo_method: :delete } %>
+      </li> <br>
     <% end %>
   </ul>
-<% else %>
-  <p>No kittens</p>
 <% end %>
 
+<%= link_to 'create kitten', new_kitten_path %>
